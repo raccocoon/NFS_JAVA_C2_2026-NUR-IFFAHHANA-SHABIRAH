@@ -23,4 +23,5 @@ Each day is organized into its own folder using the format `dayX`, ***X = day nu
 
 - `src/` → Source code of any programming language implemented
 - `exercises/` → Written tasks and answers
-- `Day_0X_Progress-Log-Summary.md`
+- `images/` → Screenshot commit evidence or code output
+- `Day_0X_Progress-Log-Summary.md` → Reflection and Learning Outcome

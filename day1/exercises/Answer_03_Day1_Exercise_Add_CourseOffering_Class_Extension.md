@@ -2,7 +2,7 @@
 
 ## 1. CourseOffering.java Code Evidence
 
-[View CourseOffering.java](day1/src/CourseOffering.java)
+[View CourseOffering.java](../src/CourseOffering.java)
 
 ## 2. GitHub Commit Evidence
 

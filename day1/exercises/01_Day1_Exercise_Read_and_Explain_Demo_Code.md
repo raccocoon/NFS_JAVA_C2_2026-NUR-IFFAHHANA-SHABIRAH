@@ -32,7 +32,7 @@ Answer the following questions in your notebook or README.md file:
 Use ChatGPT, Gemini, Claude, or Windsurf and ask:
 
 ```text
-Explain this Java class to someone who already knows TypeScript or C#.
+Explain this Java class to someone who already knows Python or C++.
 ```
 
 Then write down:

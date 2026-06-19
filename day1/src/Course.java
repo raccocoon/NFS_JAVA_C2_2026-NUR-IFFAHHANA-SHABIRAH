@@ -34,7 +34,7 @@ public class Course {
         return instructor;
     }
 
-    public void setInstructor(Instructor instructor) {
+    public void assignInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
 

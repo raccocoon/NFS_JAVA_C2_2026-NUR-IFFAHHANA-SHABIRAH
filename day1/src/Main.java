@@ -15,8 +15,8 @@ public class Main {
         Student student1 = new Student("S001", "Charlie Brown", "cFq0l@example.com");
         Student student2 = new Student("S002", "Daisy Duck", "d4oQG@example.com");
 
-        course1.setInstructor(instructor1);
-        course2.setInstructor(instructor2);
+        course1.assignInstructor(instructor1);
+        course2.assignInstructor(instructor2);
 
         System.out.println("Instructor Profiles:");
         instructor1.printProfile();

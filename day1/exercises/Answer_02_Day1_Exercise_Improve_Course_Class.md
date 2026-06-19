@@ -2,7 +2,7 @@
 
 ## 1. Updated Course Output (Screenshot Evidence)
 
-![Exercise 2 Output](day1/images/exercise2_day1_output.png)
+![Exercise 2 Output](../images/exercise2_day1_output.png)
 
 Output shows:
 - Category (e.g. Programming, Frontend)
@@ -18,13 +18,13 @@ GitHub link:
 https://github.com/raccocoon/NFS_JAVA_C2_2026-NUR-IFFAHHANA-SHABIRAH/commit/27551b519ea6a4a4e8350e4b35e9c74f0b76b509
 
 
-![Git Commit Part 1](day1/images/day1/images/exercise2_day1_commit_p1.png)
+![Git Commit Part 1](../images/exercise2_day1_commit_p1.png)
 
 - Add `category` and `active` field in `Course` class
 - Update constructor with `category` and `active` field in `Course` class
 - Update getter for `category` and `active` in `Course` class
 
-![Git Commit Part 2](day1/images/day1/images/exercise2_day1_commit_p2.png)
+![Git Commit Part 2](../images/exercise2_day1_commit_p2.png)
 
 - Update the `printSummary()` method with `category` and `active` field in `Course` class
 - Update `Main` class with `category` and `active` status output

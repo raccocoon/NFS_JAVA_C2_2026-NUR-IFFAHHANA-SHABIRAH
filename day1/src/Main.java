@@ -2,9 +2,6 @@ package src;
 
 public class Main {
     public static void main(String[] args) {
-        // Syntax for creating a new object (instance) of the Course class
-        // ClassName objectName = new Constructor();
-        // ClassName and Constructor usually match
 
         Instructor instructor1 = new Instructor("I001", "Alice Johnson", "Java Development");
         Instructor instructor2 = new Instructor("I002", "Bob Smith", "React Development");
@@ -18,8 +15,22 @@ public class Main {
         course1.assignInstructor(instructor1);
         course2.assignInstructor(instructor2);
 
+        // 2 Course Offerings added
+        CourseOffering offering1 = new CourseOffering("OFF001", "Java Fundamentals - June 2026 Intake", "2026-06-19",
+                "2026-06-20", 25, "Physical");
+
+        CourseOffering offering2 = new CourseOffering("OFF002", "React Frontend - July 2026 Intake", "2026-07-01",
+                "2026-07-02", 30, "Online");
+
+        // assign course + instructor for offering course
+        offering1.assignInstructor(instructor1);
+        offering2.assignInstructor(instructor2);
+
+        offering1.setCourse(course1);
+        offering2.setCourse(course2);
+
         System.out.println("");
-        
+
         System.out.println("Instructor Profiles:");
         System.out.println("");
         instructor1.printProfile();
@@ -34,11 +45,18 @@ public class Main {
         course2.printSummary();
         System.out.println("");
 
+        // print course offering
+        System.out.println("Course Offering Summaries:");
+        System.out.println("");
+        offering1.printOfferingSummary();
+        System.out.println("");
+        offering2.printOfferingSummary();
+        System.out.println("");
+
         System.out.println("Student Profiles:");
         System.out.println("");
         student1.printProfile();
         System.out.println("");
         student2.printProfile();
-
     }
 }

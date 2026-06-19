@@ -24,12 +24,12 @@ https://github.com/raccocoon/NFS_JAVA_C2_2026-NUR-IFFAHHANA-SHABIRAH/commit/2755
 - Update constructor with `category` and `active` field in `Course` class
 - Update getter for `category` and `active` in `Course` class
 
+<br><br>
 ![Git Commit Part 2](../images/exercise2_day1_commit_p2.png)
 
 - Update the `printSummary()` method with `category` and `active` field in `Course` class
 - Update `Main` class with `category` and `active` status output
 
----
 
 ## 3. Brief Explanation of Changes in Course.java
 

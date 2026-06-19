@@ -1,3 +1,5 @@
+package src;
+
 public class Course {
     private String courseId;
     private String title;

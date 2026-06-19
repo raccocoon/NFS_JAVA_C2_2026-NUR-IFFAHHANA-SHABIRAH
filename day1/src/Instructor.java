@@ -1,3 +1,5 @@
+package src;
+
 public class Instructor {
     private String instructorId;
     private String instructorName;

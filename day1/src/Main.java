@@ -1,3 +1,5 @@
+package src;
+
 public class Main {
     public static void main(String[] args) {
         // Syntax for creating a new object (instance) of the Course class
@@ -16,16 +18,26 @@ public class Main {
         course1.assignInstructor(instructor1);
         course2.assignInstructor(instructor2);
 
+        System.out.println("");
+        
         System.out.println("Instructor Profiles:");
+        System.out.println("");
         instructor1.printProfile();
+        System.out.println("");
         instructor2.printProfile();
+        System.out.println("");
 
         System.out.println("Course Summaries:");
+        System.out.println("");
         course1.printSummary();
+        System.out.println("");
         course2.printSummary();
+        System.out.println("");
 
         System.out.println("Student Profiles:");
+        System.out.println("");
         student1.printProfile();
+        System.out.println("");
         student2.printProfile();
 
     }

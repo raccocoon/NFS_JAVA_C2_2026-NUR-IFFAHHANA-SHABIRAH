@@ -1,5 +1,3 @@
-package com.fullstack.demo;
-
 public class Main {
     public static void main(String[] args) {
         // Syntax for creating a new object (instance) of the Course class

@@ -1,5 +1,3 @@
-package com.fullstack.demo;
-
 public class Instructor {
     private String instructorId;
     private String instructorName;

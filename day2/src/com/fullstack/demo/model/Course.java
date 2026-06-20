@@ -6,12 +6,16 @@ public class Course {
     private int durationHours;
     private String level;
     private Instructor instructor;
+    private String category;
+    private boolean active;
 
-    public Course(String courseId, String title, int durationHours, String level) {
+    public Course(String courseId, String title, int durationHours, String level, String category, boolean active) {
         setCourseId(courseId);
         setTitle(title);
         setDurationHours(durationHours);
         setLevel(level);
+        setCategory(category);
+        setActive(active);
     }
 
     public String getCourseId() {
@@ -27,7 +31,7 @@ public class Course {
     }
 
     public void setTitle(String title) {
-        this.title = requireText(title, "Course Title");
+        this.title = requireText(title, "Course title");
     }
 
     public int getDurationHours() {
@@ -46,7 +50,23 @@ public class Course {
     }
 
     public void setLevel(String level) {
-        this.level = requireText(level, "Course Level");
+        this.level = requireText(level, "Course level");
+    }
+
+    public String getCategory() {
+    return category;
+}
+
+    public void setCategory(String category) {
+        this.category = requireText(category, "Category");
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Instructor getInstructor() {
@@ -56,28 +76,20 @@ public class Course {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-    // get, set, is methods
 
-    public String getSummary() {
-        String instructorName = instructor == null ? "Not assigned yet" : instructor.getInstructorName();
-        return "Course ID: " + courseId 
-        + ", Title: " + title 
-        + ", Duration: " + durationHours 
-        + " hours, " 
-        + ", Level: " + level
-        + ", Instructor: " + instructorName;
-    }
     public void printSummary() {
+        String instructorName = instructor == null
+                ? "Not assigned yet"
+                : instructor.getInstructorName();
+
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
-
-        if (instructor == null) {
-            System.out.println("Instructor: Not assigned yet");
-        } else {
-            System.out.println("Instructor: " + instructor.getInstructorName());
-        }
+        System.out.println("Category: " + category);
+        System.out.println("Active: " + active);
+        System.out.println("Instructor: " + instructorName);
+        System.out.println("----------------------------");
     }
 
     private static String requireText(String value, String fieldName) {

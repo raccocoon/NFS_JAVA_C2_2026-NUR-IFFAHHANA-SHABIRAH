@@ -11,13 +11,6 @@ public class Student {
         setEmail(email);
     }
 
-    private static String requireText(String value, String fieldName) {
-        if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " is required.");
-        }
-        return value.trim();
-    }
-
     public String getStudentId() {
         return studentId;
     }
@@ -31,7 +24,7 @@ public class Student {
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = requireText(studentName, "Student Name");
+        this.studentName = requireText(studentName, "Student name");
     }
 
     public String getEmail() {
@@ -47,5 +40,12 @@ public class Student {
         System.out.println("Name: " + studentName);
         System.out.println("Email: " + email);
         System.out.println("----------------------------");
+    }
+
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
+        }
+        return value.trim();
     }
 }

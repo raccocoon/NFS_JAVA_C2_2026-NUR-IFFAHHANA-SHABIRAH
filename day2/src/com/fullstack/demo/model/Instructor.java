@@ -11,13 +11,6 @@ public class Instructor {
         setExpertise(expertise);
     }
 
-    private static String requireText(String value, String fieldName) {
-        if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " is required.");
-        }
-        return value.trim();
-    }
-
     public String getInstructorId() {
         return instructorId;
     }
@@ -31,7 +24,7 @@ public class Instructor {
     }
 
     public void setInstructorName(String instructorName) {
-        this.instructorName = requireText(instructorName, "Instructor Name");
+        this.instructorName = requireText(instructorName, "Instructor name");
     }
 
     public String getExpertise() {
@@ -47,5 +40,12 @@ public class Instructor {
         System.out.println("Name: " + instructorName);
         System.out.println("Expertise: " + expertise);
         System.out.println("----------------------------");
+    }
+
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
+        }
+        return value.trim();
     }
 }

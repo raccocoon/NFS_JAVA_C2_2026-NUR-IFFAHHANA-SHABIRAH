@@ -11,11 +11,11 @@
 
 ## 3. Screenshot search output
 
-![Exercise 2 Output](../images/exercise3.4_day2_search-output.png)
+![Exercise 3.4 Search Output](../images/exercise3.4_day2_search-output.png)
 
 ## 4. Screenshot filter output
 
-![Exercise 2 Output](../images/exercise3.4_day2_filter-output.png)
+![Exercise 3.4 Filter Output](../images/exercise3.4_day2_filter-output.png)
 
 ## 5. GitHub Commit Evidence
 

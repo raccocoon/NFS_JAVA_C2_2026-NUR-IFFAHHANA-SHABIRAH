@@ -6,7 +6,7 @@
 
 ## 2. Screenshot showing compiled success
 
-![Exercise 2 Output](../images/exercise3.1_day2_compiled.png)
+![Exercise 3.1 Compiled](../images/exercise3.1_day2_compiled.png)
 
 ## 3. GitHub Commit Evidence
 

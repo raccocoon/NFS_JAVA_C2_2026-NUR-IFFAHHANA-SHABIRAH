@@ -10,7 +10,7 @@
 
 ## 3. Screenshot showing output
 
-![Exercise 2 Output](../images/exercise3.2_day2_output.png)
+![Exercise 3.2 Output](../images/exercise3.2_day2_output.png)
 
 ## 4. GitHub Commit Evidence
 

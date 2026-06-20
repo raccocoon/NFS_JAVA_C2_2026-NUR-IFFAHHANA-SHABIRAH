@@ -43,6 +43,20 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
+    public List<Course> searchByTitle(String keyword) {
+        String search = keyword == null ? "" : keyword.toLowerCase();
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getTitle().toLowerCase().contains(search))
+                .toList();
+    }
+
+    public List<Course> filterByLevel(String level) {
+        String filter = level == null ? "" : level.toLowerCase();
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getLevel().toLowerCase().equals(filter))
+                .toList();
+    }
+
     private void validateCourse(Course course) {
         if (course == null) {
             throw new InvalidCourseException("Course cannot be null.");

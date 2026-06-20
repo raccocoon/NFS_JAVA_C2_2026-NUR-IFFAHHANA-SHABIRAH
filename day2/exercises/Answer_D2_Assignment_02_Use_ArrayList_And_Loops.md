@@ -6,7 +6,7 @@
 
 ## 2. Screenshot showing all lists printed
 
-![Exercise 2 Output](../images/exercise12day2_output.png)
+![Exercise 2 Output](../images/exercise2_day2_output.png)
 
 ## 3. GitHub Commit Evidence
 

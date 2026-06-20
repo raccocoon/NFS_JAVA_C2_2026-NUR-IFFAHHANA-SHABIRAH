@@ -2,7 +2,7 @@
 
 ## 1. CourseOffering.java Code Evidence
 
-[View CourseOffering.java](../src/CourseOffering.java)
+[View CourseOffering.java](../src/com/fullstack/demo/CourseOffering.java)
 
 ## 2. GitHub Commit Evidence
 

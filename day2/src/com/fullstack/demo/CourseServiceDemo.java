@@ -1,10 +1,9 @@
 package com.fullstack.demo;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
-import com.fullstack.demo.exception.InvalidCourseException;
 import com.fullstack.demo.model.Course;
+import com.fullstack.demo.model.Instructor;
 import com.fullstack.demo.repository.CourseRepository;
 import com.fullstack.demo.repository.InMemoryCourseRepository;
 import com.fullstack.demo.service.CourseService;
@@ -42,6 +41,19 @@ public class CourseServiceDemo {
         System.out.println();
         System.out.println("=== Filter by Level: Advanced ===");
         courseService.filterByLevel("Advanced").forEach(course ->
+                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+
+        System.out.println();
+        System.out.println("=== Assign Instructors ===");
+        Instructor instructor1 = new Instructor("I001", "Alice Johnson", "Java Development");
+        Instructor instructor2 = new Instructor("I002", "Bob Smith", "Frontend Development");
+
+        courseService.assignInstructor("C001", instructor1);
+        courseService.assignInstructor("C002", instructor2);
+
+        System.out.println();
+        System.out.println("=== Search by Instructor: Alice ===");
+        courseService.searchByInstructorName("Alice").forEach(course ->
                 System.out.println(course.getCourseId() + " - " + course.getTitle()));
     }
 

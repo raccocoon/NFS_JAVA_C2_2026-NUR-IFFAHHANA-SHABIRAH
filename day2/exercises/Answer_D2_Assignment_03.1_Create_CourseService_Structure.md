@@ -4,7 +4,7 @@
 
 [View CourseService.java](../src/com/fullstack/demo/service/CourseService.java)
 
-## 2. Screenshot showing all lists printed
+## 2. Screenshot showing compiled success
 
 ![Exercise 2 Output](../images/exercise3.1_day2_compiled.png)
 

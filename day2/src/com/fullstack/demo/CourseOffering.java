@@ -1,4 +1,4 @@
-package day2.src.model;
+package com.fullstack.demo;
 
 public class CourseOffering {
     private String offeringId;

@@ -1,4 +1,4 @@
-package src;
+package com.fullstack.demo;
 
 public class Course {
     private String courseId;

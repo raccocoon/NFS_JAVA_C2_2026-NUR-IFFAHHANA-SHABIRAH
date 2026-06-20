@@ -1,8 +1,4 @@
-package day2.src;
-
-import com.fullstack.demo.Course;
-import com.fullstack.demo.Instructor;
-import com.fullstack.demo.Student;
+package com.fullstack.demo;
 
 public class Main {
     public static void main(String[] args) {

@@ -2,15 +2,15 @@
 
 ## 1. Updated Course.java
 
-[View CourseOffering.java](../../day1/src/com/fullstack/demo/Course.java)
+[View Course.java](../../day1/src/com/fullstack/demo/Course.java)
 
-## 2. Updated Course.java
+## 2. Updated instructor.java
 
-[View CourseOffering.java](../../day1/src/com/fullstack/demo/Instructor.java)
+[View Instructor.java](../../day1/src/com/fullstack/demo/Instructor.java)
 
 ## 3. Updated Student.java
 
-[View CourseOffering.java](../../day1/src/com/fullstack/demo/Student.java)
+[View Student.java](../../day1/src/com/fullstack/demo/Student.java)
 
 ## 4. Working Output (Screenshot Evidence)
 

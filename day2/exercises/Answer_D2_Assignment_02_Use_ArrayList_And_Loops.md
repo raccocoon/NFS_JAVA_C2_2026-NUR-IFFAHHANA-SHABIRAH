@@ -14,6 +14,6 @@ Commit message:
 Updated Main file
 
 GitHub link:
-https://github.com/raccocoon/NFS_JAVA_C2_2026-NUR-IFFAHHANA-SHABIRAH/commits/main/day2/src/com/fullstack/demo/Main.java
+https://github.com/raccocoon/NFS_JAVA_C2_2026-NUR-IFFAHHANA-SHABIRAH/commit/3aed81353f3b85505312ca53e52a4391a5cdd78f
 
 

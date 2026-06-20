@@ -1,4 +1,6 @@
-package com.fullstack.demo;
+package com.fullstack.demo.model;
+
+import com.fullstack.demo.Course;
 
 public class CourseOffering {
     private String offeringId;

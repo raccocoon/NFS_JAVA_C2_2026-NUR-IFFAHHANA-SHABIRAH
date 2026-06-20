@@ -52,7 +52,7 @@ public class Course {
         return instructor;
     }
 
-    public void assignInstructor(Instructor instructor) {
+    public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
 

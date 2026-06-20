@@ -7,53 +7,45 @@ public class Course {
     private String level;
     private Instructor instructor;
 
-    public Course(String courseId, String title, int durationHours, String level) {
-        setCourseId(courseId);
-        setTitle(title);
-        setDurationHours(durationHours);
-        setLevel(level);
-    }
+    // Add two new fields to Course.java
+    private String category; 
+    private boolean active;
 
-    private static String requireText(String value, String fieldName) {
-        if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " is required.");
-        }
-        return value.trim();
+    // Initialize Category and Active fields
+    public Course(String courseId, String title, int durationHours, String level, 
+                  String category, boolean active) {
+        this.courseId = courseId;
+        this.title = title;
+        this.durationHours = durationHours;
+        this.level = level;
+        this.category = category;
+        this.active = active;
     }
 
     public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = requireText(courseId, "Course ID");
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = requireText(title, "Title");
     }
 
     public int getDurationHours() {
         return durationHours;
     }
 
-    public void setDurationHours(int durationHours) {
-        if (durationHours <= 0) {
-            throw new IllegalArgumentException("Duration must be more than 0.");
-        }
-        this.durationHours = durationHours;
-    }
-
     public String getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
-        this.level = requireText(level, "Level");
+    // Getter for category course
+    public String getCategory() {
+        return category;
+    }
+
+    // Getter for whether course is active or inactive (boolean value)
+    public boolean isActive() {
+        return active;
     }
 
     public Instructor getInstructor() {
@@ -69,7 +61,21 @@ public class Course {
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
-        System.out.println("Instructor: " + (instructor == null ? "Not assigned yet" : instructor.getInstructorName()));
-        System.out.println("----------------------------");
+
+        System.out.println("Category: " + category); // print category field
+
+        // print active status field
+        if (active) {
+            System.out.println("Status: Active");
+        } else {
+            System.out.println("Status: Inactive");
+        }
+
+        if (instructor == null) {
+            System.out.println("Instructor: Not assigned yet");
+        } else {
+            System.out.println("Instructor: " + instructor.getInstructorName());
+        }
     }
 }
+

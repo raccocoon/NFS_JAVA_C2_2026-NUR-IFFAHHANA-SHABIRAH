@@ -13,7 +13,8 @@ public class CourseOffering {
     private String deliveryMode; // extra field added
 
     // Constructor 
-    public CourseOffering(String offeringId, String offeringName,
+    public CourseOffering(String offeringId, String offeringName, 
+                          Course course, Instructor instructor,
                           String startDate, String endDate,
                           int capacity, String deliveryMode) {
 
@@ -34,6 +35,14 @@ public class CourseOffering {
         return offeringName;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
     public String getStartDate() {
         return startDate;
     }
@@ -50,41 +59,23 @@ public class CourseOffering {
         return deliveryMode;
     }
 
-    
-    // Getters & Setters for Course and Instructor
-    public Course getCourse() {
-        return course;
-    }
-    
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void assignInstructor(Instructor instructor) {
-        this.instructor = instructor;
+    public String getSummary() {
+        return "Offering ID: " + offeringId 
+        + ", Name: " + offeringName 
+        + ", Course: " + course.getTitle() 
+        + ", Instructor: " + instructor.getInstructorName() 
+        + ", Start Date: " + startDate 
+        + ", End Date: " + endDate 
+        + ", Capacity: " + capacity 
+        + ", Delivery Mode: " + deliveryMode;
     }
 
     // Output
     public void printOfferingSummary() {
         System.out.println("Offering ID: " + offeringId);
         System.out.println("Offering Name: " + offeringName);
-
-        if (course != null) {
-            System.out.println("Course: " + course.getTitle());
-        } else {
-            System.out.println("Course: Not assigned");
-        }
-
-        if (instructor != null) {
-            System.out.println("Instructor: " + instructor.getInstructorName());
-        } else {
-            System.out.println("Instructor: Not assigned");
-        }
+        System.out.println("Course: " + course.getTitle());
+        System.out.println("Instructor: " + instructor.getInstructorName());
 
         System.out.println("Start Date: " + startDate);
         System.out.println("End Date: " + endDate);

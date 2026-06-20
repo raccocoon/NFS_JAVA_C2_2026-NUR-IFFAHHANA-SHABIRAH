@@ -1,60 +1,97 @@
 package com.fullstack.demo;
 
-import java.util.List;
-
+import com.fullstack.demo.exception.CourseNotFoundException;
+import com.fullstack.demo.exception.DuplicateCourseException;
+import com.fullstack.demo.exception.InvalidCourseException;
 import com.fullstack.demo.model.Course;
 import com.fullstack.demo.model.Instructor;
 import com.fullstack.demo.repository.CourseRepository;
 import com.fullstack.demo.repository.InMemoryCourseRepository;
 import com.fullstack.demo.service.CourseService;
 
+import java.util.List;
+
 public class CourseServiceDemo {
 
     public static void main(String[] args) {
+
         CourseRepository courseRepository = new InMemoryCourseRepository();
         CourseService courseService = new CourseService(courseRepository);
 
-        Course course1 = new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true);
-        Course course2 = new Course("C002", "React Frontend Development", 21, "Intermediate", "Frontend", true);
-        Course course3 = new Course("C003", "MongoDB Basics", 14, "Beginner", "Database", true);
-        Course course4 = new Course("C004", "Advanced Java Backend", 28, "Advanced", "Programming", true);
+        try {
+            System.out.println("=== 1. Create Courses ===");
 
-        courseService.createCourse(course1);
-        courseService.createCourse(course2);
-        courseService.createCourse(course3);
-        courseService.createCourse(course4);
+            Course javaCourse = new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true);
+            Course reactCourse = new Course("C002", "React Frontend Development", 21, "Intermediate", "Frontend", true);
+            Course mongoCourse = new Course("C003", "MongoDB Basics", 10, "Beginner", "Database", true);
 
-        System.out.println("=== Search by Title: java ===");
-        courseService.searchByTitle("java").forEach(course ->
-                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+            courseService.createCourse(javaCourse);
+            courseService.createCourse(reactCourse);
+            courseService.createCourse(mongoCourse);
 
-        System.out.println();
-        System.out.println("=== Search by Title: react ===");
-        courseService.searchByTitle("react").forEach(course ->
-                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+            printCourses(courseService.getAllCourses());
 
-        System.out.println();
-        System.out.println("=== Filter by Level: Beginner ===");
-        courseService.filterByLevel("Beginner").forEach(course ->
-                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+            System.out.println("\n=== 2. Find Course by ID ===");
+            Course foundCourse = courseService.getCourseById("C001");
+            foundCourse.printSummary();
 
-        System.out.println();
-        System.out.println("=== Filter by Level: Advanced ===");
-        courseService.filterByLevel("Advanced").forEach(course ->
-                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+            System.out.println("\n=== 3. Search by Title ===");
+            List<Course> javaResults = courseService.searchByTitle("java");
+            printCourses(javaResults);
 
-        System.out.println();
-        System.out.println("=== Assign Instructors ===");
-        Instructor instructor1 = new Instructor("I001", "Alice Johnson", "Java Development");
-        Instructor instructor2 = new Instructor("I002", "Bob Smith", "Frontend Development");
+            System.out.println("\n=== 4. Filter by Level ===");
+            List<Course> beginnerCourses = courseService.filterByLevel("Beginner");
+            printCourses(beginnerCourses);
 
-        courseService.assignInstructor("C001", instructor1);
-        courseService.assignInstructor("C002", instructor2);
+            System.out.println("\n=== 5. Assign Instructor ===");
+            Instructor instructor = new Instructor("I001", "Aina Rahman", "Backend Development");
+            Course updatedCourse = courseService.assignInstructor("C001", instructor);
+            updatedCourse.printSummary();
 
-        System.out.println();
-        System.out.println("=== Search by Instructor: Alice ===");
-        courseService.searchByInstructorName("Alice").forEach(course ->
-                System.out.println(course.getCourseId() + " - " + course.getTitle()));
+            System.out.println("\n=== 6. Search by Instructor Name ===");
+            List<Course> instructorResults = courseService.searchByInstructorName("Aina");
+            printCourses(instructorResults);
+
+            System.out.println("\n=== 7. Update Duration ===");
+            Course durationUpdated = courseService.updateDuration("C001", 20);
+            System.out.println(durationUpdated.getCourseId() + " duration updated to " + durationUpdated.getDurationHours() + " hours");
+
+            System.out.println("\n=== 8. Delete Course ===");
+            courseService.deleteCourse("C003");
+            System.out.println("C003 deleted successfully");
+
+            System.out.println("\n=== 9. Remaining Courses ===");
+            printCourses(courseService.getAllCourses());
+
+            System.out.println("=== 10. Invalid Duration Test ===");
+            try {
+                courseService.updateDuration("C002", 0);
+            } catch (InvalidCourseException e) {
+                System.out.println("Validation error: " + e.getMessage());
+            }
+
+            System.out.println("=== 11. Try to Find Deleted Course ===");
+            courseService.getCourseById("C003");
+
+        } catch (InvalidCourseException e) {
+            System.out.println("Validation error: " + e.getMessage());
+
+        } catch (DuplicateCourseException e) {
+            System.out.println("Duplicate course error: " + e.getMessage());
+
+        } catch (CourseNotFoundException e) {
+            System.out.println("Course not found error: " + e.getMessage());
+        }
     }
 
+    private static void printCourses(List<Course> courses) {
+        if (courses.isEmpty()) {
+            System.out.println("No courses found.");
+            return;
+        }
+
+        for (Course course : courses) {
+            course.printSummary();
+        }
+    }
 }

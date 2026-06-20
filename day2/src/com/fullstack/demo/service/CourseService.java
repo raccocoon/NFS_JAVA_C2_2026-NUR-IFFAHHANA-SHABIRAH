@@ -54,6 +54,22 @@ public class CourseService {
                 .toList();
     }
 
+    public Course updateDuration(String courseId, int newDurationHours) {
+        if (newDurationHours <= 0) {
+            throw new InvalidCourseException("Course duration must be greater than zero.");
+        }
+        Course course = getCourseById(courseId);
+        course.setDurationHours(newDurationHours);
+        return courseRepository.save(course);
+    }
+
+    public void deleteCourse(String courseId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new CourseNotFoundException(courseId);
+        }
+        courseRepository.deleteById(courseId);
+    }
+
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }

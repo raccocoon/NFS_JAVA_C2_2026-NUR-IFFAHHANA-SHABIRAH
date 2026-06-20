@@ -1,14 +1,14 @@
 # Day 2 Exercise 01 - Clean up Model Classes
 
-## 1. Updated Course.java
+## 1. Updated `Course.java`
 
 [View Course.java](../../day1/src/com/fullstack/demo/Course.java)
 
-## 2. Updated instructor.java
+## 2. Updated `instructor.java`
 
 [View Instructor.java](../../day1/src/com/fullstack/demo/Instructor.java)
 
-## 3. Updated Student.java
+## 3. Updated `Student.java`
 
 [View Student.java](../../day1/src/com/fullstack/demo/Student.java)
 

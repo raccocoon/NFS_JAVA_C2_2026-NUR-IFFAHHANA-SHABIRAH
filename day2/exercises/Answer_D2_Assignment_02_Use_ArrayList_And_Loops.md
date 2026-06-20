@@ -1,6 +1,6 @@
-# Day 2 Exercise 01 - Clean up Model Classes
+# Day 2 Exercise 02 - User ArrayList and Loops
 
-## 1. Updated Main.java
+## 1. Updated `Main.java`
 
 [View Main.java](../src/com/fullstack/demo/Main.java)
 

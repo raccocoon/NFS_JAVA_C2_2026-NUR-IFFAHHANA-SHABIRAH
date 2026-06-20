@@ -6,46 +6,67 @@ public class Course {
     private int durationHours;
     private String level;
     private Instructor instructor;
-
-    // Add two new fields to Course.java
-    private String category; 
+    private String category;
     private boolean active;
 
-    // Initialize Category and Active fields
-    public Course(String courseId, String title, int durationHours, String level, 
-                  String category, boolean active) {
-        this.courseId = courseId;
-        this.title = title;
-        this.durationHours = durationHours;
-        this.level = level;
-        this.category = category;
-        this.active = active;
+    public Course(String courseId, String title, int durationHours, String level, String category, boolean active) {
+        setCourseId(courseId);
+        setTitle(title);
+        setDurationHours(durationHours);
+        setLevel(level);
+        setCategory(category);
+        setActive(active);
     }
 
     public String getCourseId() {
         return courseId;
     }
 
+    public void setCourseId(String courseId) {
+        this.courseId = requireText(courseId, "Course ID");
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = requireText(title, "Course title");
     }
 
     public int getDurationHours() {
         return durationHours;
     }
 
+    public void setDurationHours(int durationHours) {
+        if (durationHours <= 0) {
+            throw new IllegalArgumentException("Duration must be more than 0.");
+        }
+        this.durationHours = durationHours;
+    }
+
     public String getLevel() {
         return level;
     }
 
-    // Getter for category course
-    public String getCategory() {
-        return category;
+    public void setLevel(String level) {
+        this.level = requireText(level, "Course level");
     }
 
-    // Getter for whether course is active or inactive (boolean value)
+    public String getCategory() {
+    return category;
+}
+
+    public void setCategory(String category) {
+        this.category = requireText(category, "Category");
+    }
+
     public boolean isActive() {
         return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Instructor getInstructor() {
@@ -57,25 +78,24 @@ public class Course {
     }
 
     public void printSummary() {
+        String instructorName = instructor == null
+                ? "Not assigned yet"
+                : instructor.getInstructorName();
+
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
+        System.out.println("Category: " + category);
+        System.out.println("Active: " + active);
+        System.out.println("Instructor: " + instructorName);
+        System.out.println("----------------------------");
+    }
 
-        System.out.println("Category: " + category); // print category field
-
-        // print active status field
-        if (active) {
-            System.out.println("Status: Active");
-        } else {
-            System.out.println("Status: Inactive");
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
         }
-
-        if (instructor == null) {
-            System.out.println("Instructor: Not assigned yet");
-        } else {
-            System.out.println("Instructor: " + instructor.getInstructorName());
-        }
+        return value.trim();
     }
 }
-

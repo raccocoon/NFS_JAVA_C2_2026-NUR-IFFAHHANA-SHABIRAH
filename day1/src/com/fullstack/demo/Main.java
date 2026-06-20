@@ -2,37 +2,31 @@ package com.fullstack.demo;
 
 public class Main {
     public static void main(String[] args) {
+        Course course1 = new Course(
+                "C001",
+                "Java Fundamentals",
+                14,
+                "Beginner",
+                "Programming",
+                true
+        );
 
-        Instructor instructor1 = new Instructor("I001", "Alice Johnson", "Java Development");
-        Instructor instructor2 = new Instructor("I002", "Bob Smith", "React Development");
+        Instructor instructor1 = new Instructor(
+                "I001",
+                "Alice Johnson",
+                "Java Development"
+        );
 
-        Course course1 = new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true);
-        Course course2 = new Course("C002", "React Frontend Development", 21, "Intermediate", "Frontend", false);
+        Student student1 = new Student(
+                "S001",
+                "Charlie Brown",
+                "charlie@example.com"
+        );
 
-        Student student1 = new Student("S001", "Charlie Brown", "cFq0l@example.com");
-        Student student2 = new Student("S002", "Daisy Duck", "d4oQG@example.com");
-
-        course1.setInstructor(instructor1);
-        course2.setInstructor(instructor2);
-
-
-        System.out.println("Instructor Profiles:");
-
-        instructor1.printProfile();
-
-        instructor2.printProfile();
-
-
-        System.out.println("Course Summaries:");
-
+        // Prints the exact course output shown in the assignment example.
         course1.printSummary();
 
-        course2.printSummary();
-
-        System.out.println("Student Profiles:");
-
+        instructor1.printProfile();
         student1.printProfile();
-
-        student2.printProfile();
     }
 }

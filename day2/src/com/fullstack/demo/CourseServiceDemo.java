@@ -1,5 +1,6 @@
 package com.fullstack.demo;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import com.fullstack.demo.exception.InvalidCourseException;
@@ -14,34 +15,61 @@ public class CourseServiceDemo {
         CourseRepository courseRepository = new InMemoryCourseRepository();
         CourseService courseService = new CourseService(courseRepository);
 
-        System.out.println("=== Create Courses ===");
-
-        Course course1 = new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true);
-        Course course2 = new Course("C002", "React Frontend Development", 21, "Intermediate", "Frontend", true);
-        Course course3 = new Course("C003", "MongoDB Basics", 14, "Beginner", "Database", true);
-
-        saveCourse(courseService, course1);
-        saveCourse(courseService, course2);
-        saveCourse(courseService, course3);
-
-        System.out.println();
-        System.out.println("=== All Courses ===");
-        List<Course> allCourses = courseService.getAllCourses();
-        for (Course course : allCourses) {
-            System.out.println(course.getCourseId() + " - " + course.getTitle());
+        System.out.println("=== Valid Course Test ===");
+        try {
+            Course valid = new Course("V001", "Valid Course", 10, "Beginner", "Programming", true);
+            courseService.createCourse(valid);
+            System.out.println("Course saved successfully.");
+        } catch (Exception ex) {
+            System.out.println("Unexpected error: " + ex.getMessage());
         }
 
         System.out.println();
-        System.out.println("=== Null Course Test ===");
+        System.out.println("=== Invalid Course Test ===");
+
+        // Prepare base course for mutation
+        Course base = new Course("B001", "Base Course", 10, "Beginner", "Cat", true);
+
+        // Invalid: empty ID
+        Course invalidId = mutateField(copyCourse(base), "courseId", "");
+        testInvalid(courseService, invalidId);
+
+        // Invalid: empty title
+        Course invalidTitle = mutateField(copyCourse(base), "title", "");
+        testInvalid(courseService, invalidTitle);
+
+        // Invalid: duration 0
+        Course invalidDuration = mutateField(copyCourse(base), "durationHours", 0);
+        testInvalid(courseService, invalidDuration);
+
+        // Invalid: empty level
+        Course invalidLevel = mutateField(copyCourse(base), "level", "");
+        testInvalid(courseService, invalidLevel);
+    }
+
+    private static Course copyCourse(Course source) {
+        return new Course(source.getCourseId(), source.getTitle(), source.getDurationHours(), source.getLevel(), source.getCategory(), source.isActive());
+    }
+
+    private static Course mutateField(Course course, String fieldName, Object newValue) {
         try {
-            courseService.createCourse(null);
-        } catch (InvalidCourseException ex) {
-            System.out.println("Invalid course: " + ex.getMessage());
+            Field f = Course.class.getDeclaredField(fieldName);
+            f.setAccessible(true);
+            f.set(course, newValue);
+            return course;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private static void saveCourse(CourseService courseService, Course course) {
-        Course savedCourse = courseService.createCourse(course);
-        System.out.println("Course saved: " + savedCourse.getCourseId());
+    private static void testInvalid(CourseService service, Course course) {
+        try {
+            service.createCourse(course);
+            System.out.println("ERROR: invalid course was saved: " + course.getCourseId());
+        } catch (InvalidCourseException ex) {
+            System.out.println("Validation error: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Other error: " + ex.getMessage());
+        }
     }
 }
